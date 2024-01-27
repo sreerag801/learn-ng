@@ -3,17 +3,20 @@
         <h1>{{title}}</h1>
     </ng-container>
     <ng-content select="app-card-header"></ng-content>
+    <ng-container [ngTemplateOutlet]="cardMainContent"></ng-container>
     <br/>
 
-    <ng-container>
+    <ng-container *ngIf="cardMainContent">
         body
-        <ng-content select="[body]"></ng-content>
+        <ng-content select="app-card-body"></ng-content>
     </ng-container>
 
     <br/>
 
-    <ng-container>
+    <ng-container *ngIf="cardMainContent">
         others
         <ng-content></ng-content>
     </ng-container>
+
+    <ng-container *ngIf="!cardMainContent">No projected content added</ng-container>
 </ng-container>

@@ -1,10 +1,12 @@
 <ng-container>
-
   <app-app-card title="card - 1">
+    <ng-template #cardMainContent>
+      Angular Content Projection: Everything You Need to Know
+    </ng-template>
     <app-card-header>
       Header rendered using dirctive
     </app-card-header>
-    <ng-container body>body content display here</ng-container>
+    <app-card-body body>body content display here</app-card-body>
     <ng-container footer>footer content display here</ng-container>
   </app-app-card>
 
