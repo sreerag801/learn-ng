@@ -3,7 +3,7 @@
         <h1>{{title}}</h1>
     </ng-container>
     <ng-content select="app-card-header"></ng-content>
-    <ng-container [ngTemplateOutlet]="cardMainContent"></ng-container>
+    <ng-container *ngIf="cardMainContent" [ngTemplateOutlet]="cardMainContent.template"></ng-container>
     <br/>
 
     <ng-container *ngIf="cardMainContent">

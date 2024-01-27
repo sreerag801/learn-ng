@@ -14,11 +14,13 @@ export class CardHeaderDirective{}
 })
 export class CardBodyDirective{}
 
-// @Directive({
-//   selector: 'cardMainContent',
-//   standalone: true
-// })
-// export class CardMainDirective{}
+@Directive({
+  selector: '[cardMainContent]',
+  standalone: true
+})
+export class CardMainDirective{
+  constructor(public template: TemplateRef<any>){}
+}
 
 @Component({
   selector: 'app-app-card',
@@ -29,7 +31,7 @@ export class CardBodyDirective{}
 })
 export class AppCardComponent {
   @Input() title!: string;
-  @ContentChild('cardMainContent') cardMainContent!: TemplateRef<any>
+  @ContentChild(CardMainDirective) cardMainContent!: CardMainDirective
 
   constructor() {}
 }
