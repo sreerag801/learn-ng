@@ -1,0 +1,19 @@
+<ng-container>
+    <ng-container>
+        <h1>{{title}}</h1>
+    </ng-container>
+    <ng-content></ng-content>
+    <br/>
+
+    <ng-container>
+        body
+        <ng-content select="[body]"></ng-content>
+    </ng-container>
+
+    <br/>
+
+    <ng-container>
+        footer
+        <ng-content select="[footer]"></ng-content>
+    </ng-container>
+</ng-container>

@@ -1,11 +1,14 @@
-<ng-container [formGroup]="myForm">
-  password: <input formControlName="password"> <P *ngIf="!myForm.valid"> Passwords are not equal </P>
-  confirm passwrod: <input formControlName="confirmPassword">
+<ng-container>
 
+  <app-app-card title="card - 1">
+
+    <ng-container body>body content display here</ng-container>
+    <ng-container footer>footer content display here</ng-container>
+  </app-app-card>
+
+
+
+  <app-app-card title="card - 2">
+      selector not specified contents
+  </app-app-card>
 </ng-container>
-
-<pre>
-  {{myForm.value | json}}
-
-  {{myForm.valid | json}}
-</pre>
