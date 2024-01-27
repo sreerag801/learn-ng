@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { JsonPipe, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { IDynamicFieldModel } from './model/dynamicFieldModel';
 import { DynamicFieldComponentComponent } from './dynamic-field-component/dynamic-field-component.component';
 import { DataServiceService, IDropDownMenuOption } from './service/data-service.service';
@@ -9,27 +9,30 @@ import { DataServiceService, IDropDownMenuOption } from './service/data-service.
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [DynamicFieldComponentComponent, RouterOutlet, ReactiveFormsModule,NgFor, NgSwitch, NgSwitchCase, JsonPipe],
+  imports: [DynamicFieldComponentComponent, RouterOutlet, ReactiveFormsModule,NgFor, NgSwitch, NgSwitchCase, JsonPipe, AsyncPipe, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   dynamicFields!: IDynamicFieldModel[]
-  myForm!: FormGroup;
+  myForm: FormGroup = this.fb.group({});
   sectionOption!: IDropDownMenuOption;
 
   constructor(private fb: FormBuilder, private api: DataServiceService){}
-
-  
 
   ngOnInit(): void {
     this.api
         .getDropDownmenuOptions()
         .subscribe(data=>{
           this.sectionOption = data
+          console.log(data)
+          this.populateDynamicFields();
         });
+  }
 
+  
 
+  private populateDynamicFields() {
     this.dynamicFields = [{
       id: 'select-1',
       type: 'select',
@@ -49,17 +52,14 @@ export class AppComponent implements OnInit {
       label: 'Please enter number',
       value: 0,
       validators: [Validators.required, Validators.min(10)]
-    }]
+    }];
 
-    this.myForm = this.fb.group({})
+    this.myForm = this.fb.group({});
 
 
     this.dynamicFields.forEach(x => {
       const formControl = this.fb.control(x.value, x.validators);
       this.myForm.addControl(x.id, formControl);
-    })
+    });
   }
-
-  
-
 }

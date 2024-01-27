@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, delay, of } from 'rxjs';
 
 export interface IDropDownMenuOption{
   [key: string]: string
@@ -16,7 +16,7 @@ export class DataServiceService {
     'item-1': 'item 1',
     'item-2': 'item 2',
     'item-3': 'item 3'
-  })
+  }).pipe(delay(5000))
 
   getDropDownmenuOptions(): Observable<IDropDownMenuOption>{
     return this.drpData;
