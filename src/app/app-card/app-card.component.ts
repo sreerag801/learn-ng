@@ -1,4 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Directive, Input } from '@angular/core';
+
+
+@Directive({
+  selector: 'app-card-header',
+  standalone: true
+})
+export class CardHeaderDirective{}
 
 @Component({
   selector: 'app-app-card',

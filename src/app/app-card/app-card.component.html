@@ -2,7 +2,7 @@
     <ng-container>
         <h1>{{title}}</h1>
     </ng-container>
-    <ng-content></ng-content>
+    <ng-content select="app-card-header"></ng-content>
     <br/>
 
     <ng-container>
@@ -13,7 +13,7 @@
     <br/>
 
     <ng-container>
-        footer
-        <ng-content select="[footer]"></ng-content>
+        others
+        <ng-content></ng-content>
     </ng-container>
 </ng-container>

@@ -1,16 +1,12 @@
-import { JsonPipe, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { AddressComponent } from './address/address.component';
-import { AppCardComponent } from './app-card/app-card.component';
-import { BesicInfoComponent } from './besic-info/besic-info.component';
+import { AppCardComponent, CardHeaderDirective } from './app-card/app-card.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, JsonPipe, NgFor, ReactiveFormsModule, AddressComponent, BesicInfoComponent, NgIf, 
-    AppCardComponent],
+  imports: [RouterOutlet, AppCardComponent, CardHeaderDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
