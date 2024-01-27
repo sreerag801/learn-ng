@@ -1,5 +1,5 @@
-<label>This is my label</label>
-<ng-container [ngSwitch]="type">
+<label>{{dynamicField.label}}</label>
+<ng-container [ngSwitch]="dynamicField.type">
   <input type="text" *ngSwitchCase="'text'">
   <br>
   <select *ngSwitchCase="'select'">

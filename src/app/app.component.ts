@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { AppCardComponent, CardBodyDirective, CardHeaderDirective, CardMainDirective } from './app-card/app-card.component';
 import { NgSwitch, NgSwitchCase } from '@angular/common';
+import { IDynamicFieldModel } from './model/dynamicFieldModel';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,17 @@ import { NgSwitch, NgSwitchCase } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  type!: 'text' | 'select';
+  dynamicField!: IDynamicFieldModel
 
   constructor(private fb: FormBuilder){}
 
   
 
   ngOnInit(): void {
-    this.type = 'select'
+    this.dynamicField = {
+      type: 'select',
+      label: 'Please select value'
+    }
   }
 
   
