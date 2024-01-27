@@ -1,6 +1,6 @@
 import { NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 import { IDynamicFieldModel } from '../model/dynamicFieldModel';
 
 @Component({
@@ -10,14 +10,12 @@ import { IDynamicFieldModel } from '../model/dynamicFieldModel';
   templateUrl: './dynamic-field-component.component.html',
   styleUrl: './dynamic-field-component.component.css'
 })
-export class DynamicFieldComponentComponent implements OnInit {
+export class DynamicFieldComponentComponent {
   @Input() formItem!: IDynamicFieldModel;
-  @Input() form!:  FormGroup;
-  
+  form!:  FormGroup;
 
-  constructor(){}
 
-  ngOnInit(): void {
-    
+  constructor(private rootFormGroup: FormGroupDirective){
+    this.form = this.rootFormGroup.control as FormGroup;
   }
 }

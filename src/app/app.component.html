@@ -1,8 +1,7 @@
 <ng-container [formGroup]="myForm">
   <ng-container *ngFor="let formItem of dynamicFields">
       <app-dynamic-field-component
-        [formItem]="formItem"
-        [form]="myForm">
+        [formItem]="formItem">
       </app-dynamic-field-component>
     </ng-container>
 </ng-container>
