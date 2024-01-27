@@ -1,6 +1,6 @@
 import { JsonPipe, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { AddressComponent } from './address/address.component';
 import { BesicInfoComponent } from './besic-info/besic-info.component';
@@ -13,23 +13,31 @@ import { BesicInfoComponent } from './besic-info/besic-info.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  userForm!: FormGroup;
+  myForm!: FormGroup;
 
   constructor(private fb: FormBuilder){}
 
+  get colorsList(): FormArray {
+    return this.myForm.get('colors') as FormArray;
+  }
+
   ngOnInit(): void {
-    this.userForm = this.fb.group({
-      basicInfo: this.fb.group({
-        name: '',
-        sex: '',
-        age: 0
-      }),
-      address: this.fb.group({
-        line1:'',
-        line2: '',
-        zip: ''
-      })
+    this.myForm = this.fb.group({
+      colors: this.fb.array([
+        this.fb.group({name: 'red'}),
+        this.fb.group({name: 'green'}),
+        this.fb.group({name: 'yellow'}),
+        this.fb.group({name: 'orange'}),
+        this.fb.group({name: 'purple'})
+      ])
     })
   }
 
+  remove(index: number){
+    this.colorsList.removeAt(index);
+  }
+
+  AddColor(){
+    this.colorsList.push(this.fb.group({name: ''}));
+  }
 }
