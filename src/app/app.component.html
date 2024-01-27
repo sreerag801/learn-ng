@@ -1,17 +1,19 @@
-<ng-container>
- <div [formGroup]="userForm">
-
-  <!-- basicInfo -->
-  <app-besic-info formControlName="basicInfo"></app-besic-info>
-
-  <br/>
-
-  <!-- address -->
-   <app-address formControlName="address"></app-address>
- </div>
-
-  <pre>
-    {{userForm.value| json}}
-  </pre>
+<ng-container [formGroup]="myForm">
+ 
+  <ng-container formArrayName="colors">
+    <ng-container *ngFor="let _ of colorsList.controls; let idx = index" [formGroupName]="idx">
+      <div>
+        <input formControlName="name">
+        <button (click)="remove(idx)">X</button>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container>
+    <button (click)="AddColor()">Add color</button>
+  </ng-container>
 
 </ng-container>
+
+<pre>
+  {{myForm.value | json}}
+</pre>
