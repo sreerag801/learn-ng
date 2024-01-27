@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -10,10 +10,10 @@ import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/for
 })
 export class AddressComponent implements OnInit {
   form!: FormGroup;
-  
+  @Input() formControlName!: string;
   constructor(private rootFormGroup: FormGroupDirective){}
   
   ngOnInit(): void {
-    this.form = this.rootFormGroup.control;
+    this.form = this.rootFormGroup.control.get(this.formControlName) as FormGroup;
   }
 }

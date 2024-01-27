@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -10,13 +10,13 @@ import { FormGroup, FormGroupDirective, ReactiveFormsModule } from '@angular/for
 })
 export class BesicInfoComponent implements OnInit{
 
+  @Input() formControlName!: string
   form!: FormGroup;
   
-  constructor(private rootFormGroup: FormGroupDirective){}
+  constructor(private rootFormGroup: FormGroupDirective){
+  }
   
   ngOnInit(): void {
-    this.form = this.rootFormGroup.control;
+    this.form = this.rootFormGroup.control.get(this.formControlName) as FormGroup;
   }
-
-
 }
