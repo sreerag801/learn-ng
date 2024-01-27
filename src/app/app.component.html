@@ -1,20 +1,12 @@
 <ng-container [formGroup]="myForm">
-
   <ng-container *ngFor="let formItem of dynamicFields">
-    <label>{{formItem.label}}</label>
-    <ng-container [ngSwitch]="formItem.type">
-      <input type="text" *ngSwitchCase="'text'" [formControlName]="formItem.id">
-      <br>
-      <select *ngSwitchCase="'select'" [formControlName]="formItem.id">
-        <option selected [ngValue]="null">Please select</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
+      <app-dynamic-field-component
+        [formItem]="formItem"
+        [form]="myForm">
+      </app-dynamic-field-component>
     </ng-container>
-  </ng-container>
-  
 </ng-container>
 
-{{myForm.value| json}}
+{{ myForm.value | json }}
 
 

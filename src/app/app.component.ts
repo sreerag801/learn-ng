@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { AppCardComponent, CardBodyDirective, CardHeaderDirective, CardMainDirective } from './app-card/app-card.component';
 import { JsonPipe, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
 import { IDynamicFieldModel } from './model/dynamicFieldModel';
+import { DynamicFieldComponentComponent } from './dynamic-field-component/dynamic-field-component.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ReactiveFormsModule,NgFor, NgSwitch, NgSwitchCase, JsonPipe],
+  imports: [DynamicFieldComponentComponent, RouterOutlet, ReactiveFormsModule,NgFor, NgSwitch, NgSwitchCase, JsonPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     this.myForm = this.fb.group({})
 
 
-    this.dynamicFields.forEach(x=>{
+    this.dynamicFields.forEach(x => {
       this.myForm.addControl(x.id, this.fb.control(null));
     })
   }

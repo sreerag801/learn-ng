@@ -1,0 +1,15 @@
+<ng-container [formGroup]="form">
+    <label>{{formItem.label}}</label>
+    <ng-container [ngSwitch]="formItem.type">
+    <input type="text"
+        *ngSwitchCase="'text'"
+        [formControlName]="formItem.id">
+    <br>
+    <select *ngSwitchCase="'select'"
+        [formControlName]="formItem.id">
+            <option selected>Please select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+    </select>
+    </ng-container>
+</ng-container>
