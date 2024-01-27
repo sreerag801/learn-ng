@@ -1,23 +1,10 @@
-<ng-container>
-  <app-app-card title="card - 1">
-    <ng-template cardMainContent>
-      Angular Content Projection: Everything You Need to Know
-    </ng-template>
-    <!-- or -->
-    <!-- <div *cardMainContent>
-      Angular Content Projection: Everything You Need to Know
-    </div> -->
-
-    <app-card-header>
-      Header rendered using dirctive
-    </app-card-header>
-    <app-card-body body>body content display here</app-card-body>
-    <ng-container footer>footer content display here</ng-container>
-  </app-app-card>
-
-
-
-  <app-app-card title="card - 2">
-      selector not specified contents
-  </app-app-card>
+<label>This is my label</label>
+<ng-container [ngSwitch]="type">
+  <input type="text" *ngSwitchCase="'text'">
+  <br>
+  <select *ngSwitchCase="'select'">
+    <option selected [ngValue]="null">Please select</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+  </select>
 </ng-container>
