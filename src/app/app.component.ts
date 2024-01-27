@@ -35,14 +35,22 @@ export class AppComponent implements OnInit {
       id: 'text-1',
       type: 'text',
       label: 'Please enter value',
-      isRequied: true
+      value: '',
+      validators: [Validators.required, Validators.minLength(3)]
+    },
+    {
+      id: 'text-3',
+      type: 'number',
+      label: 'Please enter number',
+      value: 0,
+      validators: [Validators.required, Validators.min(10)]
     }]
 
     this.myForm = this.fb.group({})
 
 
     this.dynamicFields.forEach(x => {
-      const formControl = this.fb.control(x.value, x.isRequied ? Validators.required : null);
+      const formControl = this.fb.control(x.value, x.validators);
       this.myForm.addControl(x.id, formControl);
     })
   }

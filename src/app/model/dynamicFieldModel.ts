@@ -1,10 +1,12 @@
+import { ValidatorFn } from "@angular/forms";
+
 export interface IDynamicFieldModel {
  id: string;
- type: 'text' | 'select';
+ type: 'text' | 'select' | 'number';
  label: string;
  selectMenuOpton?: {
     [key: string]: string
  };
- value?: string;
- isRequied?: boolean;
+ value?: string | number;
+ validators?: ValidatorFn[]
 }
