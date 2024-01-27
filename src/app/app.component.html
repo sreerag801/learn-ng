@@ -1,19 +1,11 @@
 <ng-container [formGroup]="myForm">
- 
-  <ng-container formArrayName="colors">
-    <ng-container *ngFor="let _ of colorsList.controls; let idx = index" [formGroupName]="idx">
-      <div>
-        <input formControlName="name">
-        <button (click)="remove(idx)">X</button>
-      </div>
-    </ng-container>
-  </ng-container>
-  <ng-container>
-    <button (click)="AddColor()">Add color</button>
-  </ng-container>
+  password: <input formControlName="password"> <P *ngIf="!myForm.valid"> Passwords are not equal </P>
+  confirm passwrod: <input formControlName="confirmPassword">
 
 </ng-container>
 
 <pre>
   {{myForm.value | json}}
+
+  {{myForm.valid | json}}
 </pre>
