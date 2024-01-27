@@ -11,6 +11,9 @@
             <option selected [ngValue]="null">Please select</option>
             <option [ngValue]="o.key" *ngFor="let o of formItem.selectMenuOpton | keyvalue">{{o.value}}</option>
     </select>
+    <ng-container *ngSwitchCase="'select'">
+        <button (click)="addNewDropDownItem(formItem)">Add new drop down value</button>
+    </ng-container>
     <br>
     <input type="number"
         *ngSwitchCase="'number'"

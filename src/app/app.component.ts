@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { JsonPipe, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
 import { IDynamicFieldModel } from './model/dynamicFieldModel';
 import { DynamicFieldComponentComponent } from './dynamic-field-component/dynamic-field-component.component';
+import { DataServiceService, IDropDownMenuOption } from './service/data-service.service';
 
 @Component({
   selector: 'app-root',
@@ -15,21 +16,25 @@ import { DynamicFieldComponentComponent } from './dynamic-field-component/dynami
 export class AppComponent implements OnInit {
   dynamicFields!: IDynamicFieldModel[]
   myForm!: FormGroup;
+  sectionOption!: IDropDownMenuOption;
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private api: DataServiceService){}
 
   
 
   ngOnInit(): void {
+    this.api
+        .getDropDownmenuOptions()
+        .subscribe(data=>{
+          this.sectionOption = data
+        });
+
+
     this.dynamicFields = [{
       id: 'select-1',
       type: 'select',
       label: 'Please select value',
-      selectMenuOpton: {
-        'item-1': 'item 1',
-        'item-2': 'item 2',
-        'item-3': 'item 3'
-      }
+      selectMenuOpton: this.sectionOption
     },
     {
       id: 'text-1',
