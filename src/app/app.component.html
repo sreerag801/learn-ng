@@ -2,24 +2,12 @@
  <div [formGroup]="userForm">
 
   <!-- basicInfo -->
-   <ng-container formGroupName="basicInfo">
-      <span>
-        Name: <input type="text" formControlName="name">
-        Sex: <input type="text" formControlName="sex">
-        age: <input type="text" formControlName="age">
-      </span>
-   </ng-container>
+  <app-besic-info></app-besic-info>
 
   <br/>
 
   <!-- address -->
-   <ng-container formGroupName="address">
-    <span>
-      line1: <input type="text" formControlName="line1">
-      line2: <input type="text" formControlName="line2">
-      zip: <input type="text" formControlName="zip">
-    </span>
- </ng-container>
+   <app-address></app-address>
  </div>
 
   <pre>

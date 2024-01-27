@@ -2,11 +2,13 @@ import { JsonPipe, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { AddressComponent } from './address/address.component';
+import { BesicInfoComponent } from './besic-info/besic-info.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, JsonPipe, NgFor, ReactiveFormsModule],
+  imports: [RouterOutlet, JsonPipe, NgFor, ReactiveFormsModule, AddressComponent, BesicInfoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
