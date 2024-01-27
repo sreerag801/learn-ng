@@ -24,19 +24,27 @@ export class AppComponent implements OnInit {
     this.dynamicFields = [{
       id: 'select-1',
       type: 'select',
-      label: 'Please select value'
+      label: 'Please select value',
+      selectMenuOpton: {
+        'item-1': 'item 1',
+        'item-2': 'item 2',
+        'item-3': 'item 3'
+      },
+      value: 'item-1'
     },
     {
       id: 'text-1',
       type: 'text',
-      label: 'Please enter value'
+      label: 'Please enter value',
+      value: 'hello from sk'
     }]
 
     this.myForm = this.fb.group({})
 
 
     this.dynamicFields.forEach(x => {
-      this.myForm.addControl(x.id, this.fb.control(null));
+      const formControl = this.fb.control(x.value);
+      this.myForm.addControl(x.id, formControl);
     })
   }
 

@@ -1,5 +1,9 @@
 export interface IDynamicFieldModel {
  id: string;
  type: 'text' | 'select';
- label: string
+ label: string;
+ selectMenuOpton?: {
+    [key: string]: string
+ },
+ value?: string
 }
