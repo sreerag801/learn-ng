@@ -3,13 +3,23 @@
     <ng-container [ngSwitch]="formItem.type">
     <input type="text"
         *ngSwitchCase="'text'"
-        [formControlName]="formItem.id">
+        [formControlName]="formItem.id"
+        >
     <br>
     <select *ngSwitchCase="'select'"
         [formControlName]="formItem.id">
-            <option selected>Please select</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
+            <option selected [ngValue]="null">Please select</option>
+            <option [ngValue]="o.key" *ngFor="let o of formItem.selectMenuOpton | keyvalue">{{o.value}}</option>
     </select>
+    <ng-container *ngSwitchCase="'select'">
+        <button (click)="addNewDropDownItem(formItem)">Add new drop down value</button>
     </ng-container>
+    <br>
+    <input type="number"
+        *ngSwitchCase="'number'"
+        [formControlName]="formItem.id"
+        >
+    </ng-container>
+
+   
 </ng-container>
