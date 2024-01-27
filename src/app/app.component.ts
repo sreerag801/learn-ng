@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { JsonPipe, NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
 import { IDynamicFieldModel } from './model/dynamicFieldModel';
@@ -29,21 +29,20 @@ export class AppComponent implements OnInit {
         'item-1': 'item 1',
         'item-2': 'item 2',
         'item-3': 'item 3'
-      },
-      value: 'item-1'
+      }
     },
     {
       id: 'text-1',
       type: 'text',
       label: 'Please enter value',
-      value: 'hello from sk'
+      isRequied: true
     }]
 
     this.myForm = this.fb.group({})
 
 
     this.dynamicFields.forEach(x => {
-      const formControl = this.fb.control(x.value);
+      const formControl = this.fb.control(x.value, x.isRequied ? Validators.required : null);
       this.myForm.addControl(x.id, formControl);
     })
   }

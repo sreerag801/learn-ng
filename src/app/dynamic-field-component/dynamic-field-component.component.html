@@ -3,7 +3,8 @@
     <ng-container [ngSwitch]="formItem.type">
     <input type="text"
         *ngSwitchCase="'text'"
-        [formControlName]="formItem.id">
+        [formControlName]="formItem.id"
+        >
     <br>
     <select *ngSwitchCase="'select'"
         [formControlName]="formItem.id">
@@ -11,4 +12,6 @@
             <option [ngValue]="o.key" *ngFor="let o of formItem.selectMenuOpton | keyvalue">{{o.value}}</option>
     </select>
     </ng-container>
+
+   
 </ng-container>

@@ -4,6 +4,7 @@ export interface IDynamicFieldModel {
  label: string;
  selectMenuOpton?: {
     [key: string]: string
- },
- value?: string
+ };
+ value?: string;
+ isRequied?: boolean;
 }
