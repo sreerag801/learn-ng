@@ -1,6 +1,6 @@
 import { JsonPipe, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -10,14 +10,24 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'learn-angular';
-  items = [
-    {key: 0, value: '---Select--'},
-    {key: 1, value: 'India'},
-    {key: 2, value: 'USA'},
-    {key: 3, value: 'Russia'}
-  ];
+export class AppComponent implements OnInit {
+  userForm!: FormGroup;
 
-  selectedItem = new FormControl(this.items[1]);
+  constructor(private fb: FormBuilder){}
+
+  ngOnInit(): void {
+    this.userForm = this.fb.group({
+      basicInfo: this.fb.group({
+        name: '',
+        sex: '',
+        age: 0
+      }),
+      address: this.fb.group({
+        line1:'',
+        line2: '',
+        zip: ''
+      })
+    })
+  }
+
 }
