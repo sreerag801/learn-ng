@@ -1,12 +1,17 @@
 <ng-container>
-  <select [formControl]="selectedItem">
-    <option *ngFor="let i of items" [ngValue]="i">{{i.value}}</option>
-  </select>
+ <div [formGroup]="userForm">
+
+  <!-- basicInfo -->
+  <app-besic-info formControlName="basicInfo"></app-besic-info>
+
+  <br/>
+
+  <!-- address -->
+   <app-address formControlName="address"></app-address>
+ </div>
 
   <pre>
-    {{selectedItem.value| json}}
-    <br>
-    {{items | json}}
+    {{userForm.value| json}}
   </pre>
 
 </ng-container>
